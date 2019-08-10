@@ -1,0 +1,63 @@
+<div class="container">
+
+    <div class="starter-template">
+
+      <div class="row">      	
+
+        <div class="col-md-12 mt-5">
+
+          <h1>{{ titulo }} </h1>
+    
+        <form [formGroup]="meetingForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                      <label>Meeting Name</label>
+                      <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                          <div *ngIf="f.name.errors.required">Please, write a Meeting Name</div>
+                      </div>
+                  </div>                    
+                  <div class="form-group">
+                      <label>Start Date</label>
+                      <input type="text" formControlName="dateIn" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateIn.errors }" />
+                      <div *ngIf="submitted && f.dateIn.errors" class="invalid-feedback">
+                          <div *ngIf="f.dateIn.errors.required">Start Date is required</div>
+                          <div *ngIf="f.dateIn.errors.dateIn">Please, select a Start Date</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label>Finish Date</label>
+                      <input type="text" formControlName="dateOut" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateOut.errors }" />
+                      <div *ngIf="submitted && f.dateOut.errors" class="invalid-feedback">
+                          <div *ngIf="f.dateOut.errors.required">Finish Date is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="postre"> Room</label>
+                      <select class="form-control" formControlName="room" [ngClass]="{ 'is-invalid': submitted && f.room.errors }">
+                        <option value="">Select one room</option>
+                        <option *ngFor="let room of this.roomsService._rooms" value="room.id">{{room.name}}</option>     
+                      </select>
+                      <div *ngIf="submitted && f.room.errors" class="invalid-feedback">
+                          <div *ngIf="f.dateOut.errors.required">Finish Room is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="postre"> Room</label>
+                      <ul class="list-group">
+                          <li class="list-group-item" *ngFor="let reservation of this.reservationService._reservation" >{{reservation.}}</li>
+                        </ul>
+                  </div>
+                  <div class="form-group">
+                      <button [disabled]="loading" class="btn btn-primary">Submit</button>
+                  </div>
+   
+              </form>
+
+      </div>
+
+
+  </div>
+
+   </div>
+
+</div>

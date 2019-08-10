@@ -1,0 +1,27 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container-fluid" id="container-headercontent">
+  <header class="header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Conference Rooms Booking</a> 
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" routerLink="addMeeting">Create a Meeting <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="viewMeeting">View Meetings</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+  </header>
+  <section class="content">
+    <router-outlet></router-outlet>
+  </section>
+  <footer class="footer">
+  </footer>
+</div>
+

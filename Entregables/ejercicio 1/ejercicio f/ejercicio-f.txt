@@ -1,0 +1,3 @@
+Primero intentaria reestructurar la consulta de forma eficiente, tratando de acceder a la menor cantidad de joins posibles.
+Luego, crearia un indice por los campos de busqueda, dado que tenemos poca tasa de actualizacion. De esta forma, accederiamos 
+mas rapido a los datos solicitados. Al tener poca tasa de actualziacion, el indice se tendra que reorganizar muy pocas veces.

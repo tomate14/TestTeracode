@@ -1,0 +1,9 @@
+Diseño 1:
+	--> Pro: Diseño eficiente de datos, para no tener datos repetidos en tablas
+			 Facil mantenimiento de datos.
+
+
+Diseño 2:
+	--> Contra: Los datos no estan bien distribuidos
+				Repeticion de datos en tablas, por ejemplo en la tabla usuarios, para cada subject tenemos que generar una row similar cambiando dicho valor
+				Dificil de mantener al actualizar datos.
