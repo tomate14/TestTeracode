@@ -3,8 +3,7 @@
     <div class="starter-template">
 
       <div class="row">      	
-        <div class="col-md-1"></div>
-        <div class="col-md-5 mt-5">
+        <div class="col-md-5 mt-5 meetingForm">
     
             <form [formGroup]="meetingForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
@@ -50,18 +49,20 @@
                                     <span class="input-group-text">Guest email</span>
                                 </div>
                                 <input type="email" class="form-control" id="basic-url" aria-describedby="basic-addon3" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
-                                <a href="" class="btn btn-primary" id="btnAddGuest" (click)="addGuest()">Add</a>
+                                <a class="btn btn-dark" id="btnAddGuest" (click)="addGuest()">Add</a>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button [disabled]="loading" class="btn btn-primary">Submit</button>
+                        <button [disabled]="loading" class="btn btn-dark">Submit</button>
                     </div>   
             </form>
         </div>
-        <div class="col-md-6 mt-5 guestList" *ngIf="guests.length>0">
+        <div class="col-md-2"></div>
+
+        <div class="col-md-4 mt-5 guestList" *ngIf="guests.length>0">
             <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let guest of guests">
+                <li class="list-group-item d-flex justify-content-between align-items-center listItem" *ngFor="let guest of guests">
                     <span>{{guest}}</span> 
                     <button class="btn" id="btnCross"(click)="deleteGuest(guest)"><span>x</span></button>                   
                 </li>

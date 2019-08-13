@@ -18,3 +18,30 @@
 #btnAddGuest{
     color:white;
 }
+label{
+    font-style: bold;
+    font-weight: 600;
+    font-family: cursive;
+}
+.meetingForm, .guestList {
+    border-radius: 5px;
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
+    background: aliceblue;
+}
+
+.listItem{
+    height: 41px;
+}
+
+.meetingForm{
+	-webkit-animation: slide-tr 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: slide-tr 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+}
+
+.guestList {
+	-webkit-animation: fade-in-fwd 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in-fwd 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}

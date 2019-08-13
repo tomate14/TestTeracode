@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'meetingBook';
+  private menuColapsed:boolean;
+  
+  constructor(){
+    this.menuColapsed = false;
+  }
+
+  toggleNavbar(){
+    this.menuColapsed = !this.menuColapsed;
+  }
 }

@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+@-webkit-keyframes slide-tr {
+  0% {
+    -webkit-transform: translateY(-100px) translateX(-200px);
+            transform: translateY(0) translateX(-200px);
+  }
+  100% {
+    -webkit-transform: translateY(-200px) translateX(0px);
+            transform: translateY(-200px) translateX(0px);
+  }
+}
+@keyframes slide-tr {
+  0% {
+    -webkit-transform: translateY(1000px) translateX(-200px);
+            transform: translateY(1000px) translateX(-200px);
+  }
+  100% {
+    -webkit-transform: translateY(0px) translateX(0px);
+            transform: translateY(0px) translateX(0px);
+  }
+}
+
+@-webkit-keyframes fade-in-fwd {
+    0% {
+      -webkit-transform: translateZ(-80px);
+              transform: translateZ(-80px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in-fwd {
+    0% {
+      -webkit-transform: translateZ(-80px);
+              transform: translateZ(-80px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+      opacity: 1;
+    }
+  }
+  
