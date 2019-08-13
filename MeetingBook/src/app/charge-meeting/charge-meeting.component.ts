@@ -33,14 +33,14 @@ export class ChargeMeetingComponent implements OnInit {
 
   ngOnInit() {       
       let name = "";
-      let dateIn = new Date();
-      let dateOut = new Date();
+      let dateIn = "";;
+      let dateOut = "";
       let room = "";
 
       if(this.reservationService._viewReservation != null || this.reservationService._viewReservation != undefined){
         name = this.reservationService._viewReservation.name;
-        dateIn = this.reservationService._viewReservation.dateIn;
-        dateOut = this.reservationService._viewReservation.dateOut;
+        dateIn = new Date(this.reservationService._viewReservation.dateIn).toISOString().substr(0,16);
+        dateOut = new Date(this.reservationService._viewReservation.dateOut).toISOString().substr(0,16);
         room = this.reservationService._viewReservation.room.id.toString();
         this.guests = this.reservationService._viewReservation.guests;
       }
@@ -50,9 +50,26 @@ export class ChargeMeetingComponent implements OnInit {
         dateIn: [dateIn, Validators.required], 
         dateOut: [dateOut, Validators.required], 
         room: [room, Validators.required] 
-    });
+    },{validator: this.dateLessThan('dateIn', 'dateOut')});
+
+    console.log(this.meetingForm.controls);
+
   }
 
+  dateLessThan(from: string, to: string) {
+      return (formBuilder: FormGroup): {[key: string]: any} => {        
+        let f = formBuilder.controls[from];
+        let t = formBuilder.controls[to];
+        let dataFrom = new Date(f.value);
+        let dataTo = new Date(t.value);
+        if (dataFrom.getTime() > dataTo.getTime()) {
+          return {
+            dates: "Date Start should be less than Date Finish"
+          };
+        }
+        return {};
+      }
+  }
   get f() { return this.meetingForm.controls; }
 
   onSubmit() {

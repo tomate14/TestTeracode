@@ -16,28 +16,30 @@
                     </div>                    
                     <div class="form-group">
                         <label>Start Date</label>
-                        <input type="datetime-local" formControlName="dateIn" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateIn.errors }" required/>
+                        <input type="datetime-local" formControlName="dateIn" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateIn.errors }"/>
                         <div *ngIf="submitted && f.dateIn.errors" class="invalid-feedback">
-                            <div *ngIf="f.dateIn.errors.required">Start Date is required</div>
-                            <div *ngIf="f.dateIn.errors.dateIn">Please, select a Start Date</div>
+                            <div *ngIf="f.dateIn.errors != null && f.dateIn.errors.required">Please, select a Start Date</div>
                         </div>
                     </div>
                     <div class="form-group">
                         
                         <label>Finish Date</label>
-                        <input type="datetime-local" formControlName="dateOut" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateOut.errors }" required/>
-                        <div *ngIf="submitted && f.dateOut.errors" class="invalid-feedback">
-                            <div *ngIf="f.dateOut.errors.required">Finish Date is required</div>
+                        <input type="datetime-local" formControlName="dateOut" class="form-control" [ngClass]="{ 'is-invalid': (submitted && f.dateOut.errors) || (submitted && f.dateOut.errors == null) }"/>
+                        <div *ngIf="submitted && f.dateOut.errors != null" class="invalid-feedback">
+                            <div *ngIf="f.dateOut.errors != null && f.dateOut.errors.required">Please, select a Finish Date</div>
+                        </div>
+                        <div *ngIf="submitted && f.dateOut.errors == null" class="invalid-feedback textInvalidDate">
+                            <p>{{meetingForm.errors.dates}}</p>    
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="postre"> Room</label>
+                        <label for="room"> Room</label>
                         <select class="form-control" formControlName="room" [ngClass]="{ 'is-invalid': submitted && f.room.errors }" required>
                             <option value="">Select one room</option>
                             <option *ngFor="let room of this.roomsService._rooms" value="{{room.id}}">{{room.name}}</option>     
                         </select>
                         <div *ngIf="submitted && f.room.errors" class="invalid-feedback">
-                            <div *ngIf="f.dateOut.errors.required">Finish Room is required</div>
+                            <div *ngIf="f.room.errors.required">Finish Room is required</div>
                         </div>
                     </div>
                     <div class="row rowGuest">
@@ -48,7 +50,7 @@
                                     <span class="input-group-text">Guest email</span>
                                 </div>
                                 <input type="email" class="form-control" id="basic-url" aria-describedby="basic-addon3" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
-                                <button class="btn btn-primary" (click)="addGuest()">Add</button>
+                                <a href="" class="btn btn-primary" id="btnAddGuest" (click)="addGuest()">Add</a>
                             </div>
                         </div>
                     </div>
