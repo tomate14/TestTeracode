@@ -1,8 +1,0 @@
-SELECT name,lastName, birthday
-FROM PERSON P
-WHERE EXISTS (
-				SELECT 1 
-				FROM STUDENT S
-				WHERE S.id = P.id
-             )
-  AND DATEDIFF(DAY,P.birthday, GETDATE())/365 BETWEEN 19 AND 24

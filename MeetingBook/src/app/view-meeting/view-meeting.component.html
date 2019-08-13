@@ -1,3 +1,14 @@
-<p>
-  view-meeting works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center" (dblclick)="viewReservation(reserve)"*ngFor="let reserve of this.reservationService._reservation">
+              <span>{{reserve.name}}</span>
+              <span class="badge badge-primary badge-pill">{{reserve.guests.length}}</span>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6"></div>
+  </div>
+</div>
+
