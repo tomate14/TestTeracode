@@ -23,11 +23,14 @@ export class ReservationsService {
         return reserv.id == reservation.id;
     });
     
-    if(exist == undefined){
-      this._reservation.push(reservation);
-    }else{
-      exist = reservation;
+    
+    if(exist != undefined){
+      this._reservation = this._reservation.filter((reserv)=>{
+          return reserv.id != exist.id;
+      });
+      
     }
+    this._reservation.push(reservation);
     this._viewReservation = null;
     this.saveReservation();
   }

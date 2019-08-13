@@ -39,8 +39,10 @@ export class ChargeMeetingComponent implements OnInit {
 
       if(this.reservationService._viewReservation != null || this.reservationService._viewReservation != undefined){
         name = this.reservationService._viewReservation.name;
-        dateIn = new Date(this.reservationService._viewReservation.dateIn).toISOString().substr(0,16);
-        dateOut = new Date(this.reservationService._viewReservation.dateOut).toISOString().substr(0,16);
+        //Convertion for inputs values
+
+        dateIn = this.reservationService._viewReservation.dateIn;
+        dateOut = this.reservationService._viewReservation.dateOut;
         room = this.reservationService._viewReservation.room.id.toString();
         this.guests = this.reservationService._viewReservation.guests;
       }
@@ -52,7 +54,6 @@ export class ChargeMeetingComponent implements OnInit {
         room: [room, Validators.required] 
     },{validator: this.dateLessThan('dateIn', 'dateOut')});
 
-    console.log(this.meetingForm.controls);
 
   }
 
@@ -66,10 +67,19 @@ export class ChargeMeetingComponent implements OnInit {
           return {
             dates: "Date Start should be less than Date Finish"
           };
+        }else{
+          let dateResult = (dataTo.getTime() - dataFrom.getTime());
+          let minuts = Math.round((dateResult/1000)/60);
+          if(minuts <= 15 || minuts > 180){
+            return {
+              dates: "The meeting should take between 15 and 180 minutes"
+            };
+          }
         }
         return {};
       }
   }
+
   get f() { return this.meetingForm.controls; }
 
   onSubmit() {
